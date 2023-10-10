@@ -2,21 +2,37 @@ package DataStructuresAndAlgorithms;
 
 import java.util.NoSuchElementException;
 
+/**
+ * This class implements a singly linked list.
+ */
 public class LinkedList {
 
+    /**
+     * This class represents a node in the linked list.
+     */
     private class Node {
-        private int value;
-        private Node next;
+        private int value; // The value stored in this node
+        private Node next; // The next node in the list
 
+        /**
+         * Constructs a new node with the given value.
+         *
+         * @param value the value to store in this node
+         */
         public Node(int value) {
             this.value = value;
         }
     }
 
-    private Node first;
-    private Node last;
-    private int size;
+    private Node first; // The first node in the list
+    private Node last; // The last node in the list
+    private int size; // The number of elements in the list
 
+    /**
+     * Adds a new element to the beginning of the list.
+     *
+     * @param item the value to add
+     */
     public void addFirst(int item) {
         var node = new Node(item);
 
@@ -30,6 +46,11 @@ public class LinkedList {
         size++;
     }
 
+    /**
+     * Adds a new element to the end of the list.
+     *
+     * @param item the value to add
+     */
     public void addLast(int item) {
         var node = new Node(item);
 
@@ -43,6 +64,15 @@ public class LinkedList {
         size++;
     }
 
+    /**
+     * Returns the index of the first occurrence of the specified element in this
+     * list,
+     * or -1 if this list does not contain the element.
+     *
+     * @param item the element to search for
+     * @return the index of the first occurrence of the specified element or -1 if
+     *         the element is not present
+     */
     public int indexOf(int item) {
         int index = 0;
         var current = first;
@@ -58,14 +88,30 @@ public class LinkedList {
         return -1;
     }
 
+    /**
+     * Returns the number of elements in this list.
+     *
+     * @return the number of elements in this list
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Returns true if this list contains the specified element.
+     *
+     * @param item the element to search for
+     * @return true if this list contains the specified element, false otherwise
+     */
     public boolean contains(int item) {
         return indexOf(item) != -1;
     }
 
+    /**
+     * Removes the first element from this list.
+     *
+     * @throws NoSuchElementException if the list is empty
+     */
     public void deleteFirst() {
 
         if (isEmpty())
@@ -82,6 +128,11 @@ public class LinkedList {
         size--;
     }
 
+    /**
+     * Removes the last element from this list.
+     *
+     * @throws NoSuchElementException if the list is empty
+     */
     public void deleteLast() {
 
         if (isEmpty())
@@ -98,6 +149,13 @@ public class LinkedList {
         size--;
     }
 
+    /**
+     * Returns the node preceding the specified node, or null if the specified node
+     * is the first node.
+     *
+     * @param node the node whose predecessor is to be returned
+     * @return the preceding node, or null if the specified node is the first node
+     */
     private Node getPrevious(Node node) {
         var current = first;
 
@@ -111,10 +169,22 @@ public class LinkedList {
         return null;
     }
 
+    /**
+     * Returns true if this list contains no elements.
+     *
+     * @return true if this list contains no elements, false otherwise
+     */
     private boolean isEmpty() {
         return first == null;
     }
 
+    /**
+     * Returns an array containing all of the elements in this list in proper
+     * sequence.
+     *
+     * @return an array containing all of the elements in this list in proper
+     *         sequence
+     */
     public int[] toArray() {
         int[] array = new int[size];
 
@@ -128,6 +198,9 @@ public class LinkedList {
         return array;
     }
 
+    /**
+     * Reverses the order of the elements in this list.
+     */
     public void reverse() {
 
         if (isEmpty())
@@ -148,6 +221,17 @@ public class LinkedList {
         first = previous;
     }
 
+    /**
+     * Returns the value of the element at the specified position from the end of
+     * the list.
+     *
+     * @param k the position from the end of the list (1-based index)
+     * @return the value of the element at the specified position from the end of
+     *         the list
+     * @throws IllegalStateException    if the list is empty
+     * @throws IllegalArgumentException if the specified position is non-positive or
+     *                                  greater than the size of the list
+     */
     public int getKthNodeFromEnd(int k) {
 
         if (isEmpty())
