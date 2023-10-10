@@ -258,4 +258,51 @@ public class LinkedList {
         return a.value;
     }
 
+    // ... (rest of your LinkedList class)
+
+    public static void main(String[] args) {
+        // Create a new LinkedList instance
+        LinkedList list = new LinkedList();
+
+        // Add some elements to the list
+        list.addFirst(10);
+        list.addLast(20);
+        list.addLast(30);
+
+        // Display the size of the list
+        System.out.println("Size: " + list.size()); // Output: 3
+
+        // Check if a particular element is present in the list
+        System.out.println("Contains 20: " + list.contains(20)); // Output: true
+        System.out.println("Contains 40: " + list.contains(40)); // Output: false
+
+        // Get and display the index of a particular element
+        System.out.println("Index of 20: " + list.indexOf(20)); // Output: 1
+
+        // Delete the first and last elements
+        list.deleteFirst();
+        list.deleteLast();
+
+        // Display the remaining elements as an array
+        int[] array = list.toArray();
+        for (int value : array) {
+            System.out.print(value + " "); // Output: 20
+        }
+        System.out.println();
+
+        // Reverse the list and display the elements again
+        list.reverse();
+        array = list.toArray();
+        for (int value : array) {
+            System.out.print(value + " "); // Output: 20
+        }
+        System.out.println();
+
+        // Attempt to get the 1st node from the end of the list
+        try {
+            System.out.println("1st node from end: " + list.getKthNodeFromEnd(1)); // Output: 20
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
