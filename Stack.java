@@ -1,5 +1,7 @@
 package DataStructuresAndAlgorithms;
 
+import java.util.Arrays;
+
 public class Stack {
     private int[] elements;
     private int top;
@@ -39,12 +41,19 @@ public class Stack {
         return top == -1;
     }
 
+    @Override
+    public String toString() {
+        var content = Arrays.copyOfRange(elements, 0, top + 1);
+        return Arrays.toString(content);
+    }
+
     public static void main(String[] args) {
         // Test the Stack implementation
         Stack stack = new Stack(10);
         stack.push(5);
         stack.push(10);
         stack.push(15);
+        System.out.println(stack.toString()); // Output: [5, 10, 15]
         System.out.println(stack.peek()); // Output: 15
         System.out.println(stack.pop()); // Output: 15
         System.out.println(stack.peek()); // Output: 10
