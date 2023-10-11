@@ -1,6 +1,8 @@
 package DataStructuresAndAlgorithms.PraticeProblems;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * This class provides a solution to the problem of finding the first
@@ -42,6 +44,19 @@ public class FirstNonRepeatedCharacter {
         return Character.MIN_VALUE;
     }
 
+    public static Character findFirstRepeatedCharacter(String string) {
+        Set<Character> set = new HashSet<>();
+
+        for (var ch : string.toCharArray()) {
+            if (set.contains(ch))
+                return ch;
+
+            set.add(ch);
+        }
+
+        return Character.MIN_VALUE;
+    }
+
     /**
      * Main method to test the findFirstNonRepeatedCharacter method with a sample
      * input.
@@ -51,7 +66,10 @@ public class FirstNonRepeatedCharacter {
     public static void main(String[] args) {
 
         // Call the method with a sample input and print the result
-        char content = findFirstNonRepeatedCharacter("A green Apple");
-        System.out.println(content); // Output: g
+        char firstNonRepeated = findFirstNonRepeatedCharacter("A green Apple");
+        System.out.println(firstNonRepeated); // Output: g
+
+        char firstRepeated = findFirstRepeatedCharacter("green apple");
+        System.out.println(firstRepeated); // Output: e
     }
 }
