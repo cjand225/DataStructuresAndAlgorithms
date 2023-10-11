@@ -7,7 +7,7 @@ This repository is a collection of data structures, algorithms, and practice pro
 The repository is organized into the following main directories:
 
 - `DataStructuresAndAlgorithms`: This directory contains implementations of various data structures and algorithms.
-- `PraticeProblems`: This directory includes solutions to practice problems that are solved using the implementations from the `DataStructuresAndAlgorithms` directory.
+- `PraticeProblems`: This directory includes solutions to practice problems that are solved using the java implementations of the data structures.
 
 ## Featured Implementations
 
@@ -15,8 +15,8 @@ The repository is organized into the following main directories:
 
 - Singly Linked List
 - Stack
-- Expression Evaluator (with balanced bracket checking)
-- String Reverser
+- Queue
+- HashTable/HashMap
 
 ### Algorithms
 
@@ -24,6 +24,9 @@ The repository is organized into the following main directories:
 
 - String Reveral w/ Stack
 - Balanced Expressions w/ Stack
+- First Non-repeating character in a string
+- First repeating character in a string
+- Reversing a Queue.
 
 ## Usage
 
