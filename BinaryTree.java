@@ -204,6 +204,69 @@ public class BinaryTree {
     }
 
     /**
+     * Compares this binary tree to another binary tree.
+     *
+     * @param other the other binary tree to compare to
+     * @return true if the trees are equal, false otherwise
+     */
+    public boolean equals(BinaryTree other) {
+
+        if (other == null)
+            return false;
+
+        return equals(root, other.root);
+    }
+
+    /**
+     * Helper method to compare two nodes and their descendants,
+     * using a pre-order traversal.
+     *
+     * @param first  the first node
+     * @param second the second node
+     * @return true if the nodes and their descendants are equal, false otherwise
+     */
+    private boolean equals(Node first, Node second) {
+        if (first == null && second == null)
+            return true;
+
+        if (first != null && second != null)
+            return first.value == second.value
+                    && equals(first.leftChild, second.leftChild)
+                    && equals(first.rightChild, second.rightChild);
+
+        return false;
+    }
+
+    /**
+     * Checks if the binary tree is a binary search tree (BST).
+     *
+     * @return true if the tree is a BST, false otherwise
+     */
+    public boolean isBinarySearchTree() {
+        return isBinarySearchTree(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    /**
+     * Helper method to check if a subtree is a BST, by ensuring that
+     * all node values are within the specified range.
+     *
+     * @param root the root of the subtree
+     * @param min  the minimum allowed value
+     * @param max  the maximum allowed value
+     * @return true if the subtree is a BST, false otherwise
+     */
+    private boolean isBinarySearchTree(Node root, int min, int max) {
+        if (root == null)
+            return true;
+
+        if (root.value < min || root.value > max)
+            return false;
+
+        return isBinarySearchTree(root.leftChild, min, root.value - 1)
+                && isBinarySearchTree(root.rightChild, root.value + 1, max);
+    }
+
+    /**
      * Main method to test the BinaryTree implementation with sample operations.
      *
      * @param args command line arguments (not used)
@@ -218,6 +281,7 @@ public class BinaryTree {
         tree.insert(6);
         tree.insert(8);
         tree.insert(10);
+
         System.out.println("Height: " + tree.height());
         System.out.println("Min for Binary Tree: " + tree.min());
         System.out.println("Min for Binary Search Tree: " + tree.searchTreeMin());
@@ -231,5 +295,22 @@ public class BinaryTree {
         tree.traverseInOrder();
         System.out.println("Post-Order Traversal:");
         tree.traversePostOrder();
+
+        BinaryTree tree2 = new BinaryTree();
+
+        tree2.insert(7);
+        tree2.insert(4);
+        tree2.insert(9);
+        tree2.insert(1);
+        tree2.insert(6);
+        tree2.insert(8);
+        tree2.insert(10);
+
+        tree.equals(tree2);
+        System.out.println("Trees Are Equal: " + tree.equals(tree2));
+
+        System.out.println("Trees Are not Equal: " + tree.equals(null));
+
+        System.out.println("Is Binary Search Tree:  " + tree.isBinarySearchTree());
     }
 }
