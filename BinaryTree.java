@@ -164,6 +164,9 @@ public class BinaryTree {
     }
 
     private int min(Node root) {
+        if (root == null)
+            throw new IllegalStateException("Can't get min of null node.");
+
         if (isLeaf(root))
             return root.value;
 
@@ -267,6 +270,47 @@ public class BinaryTree {
     }
 
     /**
+     * Recursive helper method to print the values of nodes at a specified distance
+     * from a given node.
+     *
+     * @param root     the root node of the subtree
+     * @param distance the distance from the given node
+     */
+    private void getNodesAtKDistance(Node root, int distance) {
+
+        if (root == null)
+            return;
+
+        if (distance == 0)
+            System.out.println(root.value);
+
+        getNodesAtKDistance(root.leftChild, distance - 1);
+
+        getNodesAtKDistance(root.rightChild, distance - 1);
+
+    }
+
+    /**
+     * Public method to print the values of nodes at a specified distance from the
+     * root node.
+     *
+     * @param distance the distance from the root node
+     */
+    public void getNodesAtKDistance(int distance) {
+        getNodesAtKDistance(root, distance);
+    }
+
+    /**
+     * Traverses the binary tree in level order, printing the values of nodes at
+     * each level.
+     */
+    public void traverseLevelOrder() {
+        for (var i = 0; i <= height(); i++) {
+            getNodesAtKDistance(i);
+        }
+    }
+
+    /**
      * Main method to test the BinaryTree implementation with sample operations.
      *
      * @param args command line arguments (not used)
@@ -312,5 +356,17 @@ public class BinaryTree {
         System.out.println("Trees Are not Equal: " + tree.equals(null));
 
         System.out.println("Is Binary Search Tree:  " + tree.isBinarySearchTree());
+
+        System.out.println("Nodes at (K) 0 distance");
+        tree.getNodesAtKDistance(0);
+        System.out.println("Nodes at (K) 1 distance");
+        tree.getNodesAtKDistance(1);
+        System.out.println("Nodes at (K) 2 distance");
+        tree.getNodesAtKDistance(2);
+        System.out.println("Nodes at (K) 3 distance");
+        tree.getNodesAtKDistance(3);
+
+        System.out.println("Level Order/BFT");
+        tree.traverseLevelOrder();
     }
 }
