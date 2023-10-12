@@ -17,8 +17,16 @@ The repository is organized into the following main directories:
 - Stack
 - Queue
 - HashTable/HashMap
+- Binary Tree
 
 ### Algorithms
+
+- Binary Tree
+  - Breadth First Search
+  - Depth First Search
+    - Pre-order Traversal
+    - In-order Traversal
+    - Post-order Traversal
 
 ### Practice Problems
 
