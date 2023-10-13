@@ -18,6 +18,7 @@ The repository is organized into the following main directories:
 - Queue
 - HashTable/HashMap
 - Binary Tree
+- AVL Tree (self balancing BST)
 
 ### Algorithms
 
